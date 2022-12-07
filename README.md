@@ -8,4 +8,7 @@ It can be tested using an **Android Emulator**, **iOS Simulator** or with a phys
 
 # Screenshots
 
-[Home screen](screenshots/home.jfif)
+![Home screen](screenshots/home.jfif)
+![Display payment screen](screenshots/payment.jfif)
+![Send payment screen](screenshots/send.jfif)
+![Receive payment screen](screenshots/receive.jfif)
