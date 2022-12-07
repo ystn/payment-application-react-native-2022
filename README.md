@@ -1,7 +1,7 @@
 # payment-application-react-native-2022
 
-This is a simple cross-platform mobile application, developped with basic React and React Native skills for purpose to be an appendix to the introduction to modern cross-platform development with React Native.
-
+This is a simple cross-platform mobile application, developped with basic React and React Native skills for purpose to be an appendix to the introduction to modern cross-platform development with React Native.  
+* [Course slides in french](course%20slides/Exposé%20développement%20mobile.pdf)
 
 # How to execute?
 Simply download it and run `npm install` to install dependencies, then `npm start` to run the application using expo.
