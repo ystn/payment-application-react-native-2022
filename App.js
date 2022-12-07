@@ -8,31 +8,11 @@ export default function App() {
   const [balance, setBalance] = useState(0);
   const [currentScreen, setCurrentScreen] = useState({name: constants.HOME_SCREEN, params: ""});
 
-  function goToHome() {
-    setCurrentScreen({name: constants.HOME_SCREEN, params: ""})
-  }
-
-  function goToSendPayment() {
-    setCurrentScreen({name: constants.SEND_PAYMENT_SCREEN, params: ""})
-  }
-
-  function goToReceivePayment() {
-    setCurrentScreen({name: constants.RECEIVE_PAYMENT_SCREEN, params: ""})
-  }
-
-  function goToPayment(id) {
-    setCurrentScreen({name: constants.PAYMENT_SCREEN, params: id})
-  }
-
-  function goToHome() {
-    setCurrentScreen({name: constants.HOME_SCREEN, params: ""})
-  }
-
   const navigation = {
-    goToHome,
-    goToSendPayment,
-    goToReceivePayment,
-    goToPayment,
+    goToHome: () => setCurrentScreen({name: constants.HOME_SCREEN, params: ""}),
+    goToSendPayment: () => setCurrentScreen({name: constants.SEND_PAYMENT_SCREEN, params: ""}),
+    goToReceivePayment: () => setCurrentScreen({name: constants.RECEIVE_PAYMENT_SCREEN, params: ""}),
+    goToPayment : id => () => setCurrentScreen({name: constants.PAYMENT_SCREEN, params: id}),
   }
 
   function appendPayment(payment) {
@@ -45,7 +25,7 @@ export default function App() {
         } catch(e) {
           payment.id = 0;
         }
-        payment.goToPayment = navigation.goToPayment;
+        payment.goToPayment = navigation.goToPayment(payment.id);
         return [...p, payment];
       } catch(e) {
         return p;
@@ -55,8 +35,8 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       { currentScreen.name === constants.HOME_SCREEN && <HomeScreen balance={balance} payments={payments} navigation={navigation} />}
-      { currentScreen.name === constants.SEND_PAYMENT_SCREEN && <NewPaymentScreen goToHome={goToHome} appendPayment={appendPayment} type={PAYMENT_TYPE_SEND} />}
-      { currentScreen.name === constants.RECEIVE_PAYMENT_SCREEN && <NewPaymentScreen goToHome={goToHome} appendPayment={appendPayment} type={PAYMENT_TYPE_RECEIVE} />}
+      { currentScreen.name === constants.SEND_PAYMENT_SCREEN && <NewPaymentScreen goToHome={navigation.goToHome} appendPayment={appendPayment} type={PAYMENT_TYPE_SEND} />}
+      { currentScreen.name === constants.RECEIVE_PAYMENT_SCREEN && <NewPaymentScreen goToHome={navigation.goToHome} appendPayment={appendPayment} type={PAYMENT_TYPE_RECEIVE} />}
       { currentScreen.name === constants.PAYMENT_SCREEN && <PaymentScreen payment={payments.filter(e => e.id === currentScreen.params)[0]} goToHome={navigation.goToHome} /> }
     </SafeAreaView>
   );

@@ -1,6 +1,6 @@
-export { HomeScreen } from './Home';
-export { PaymentScreen } from './Payment';
-export { NewPaymentScreen } from './NewPayment';
+export { HomeScreen } from './HomeScreen';
+export { PaymentScreen } from './PaymentScreen';
+export { NewPaymentScreen } from './NewPaymentScreen';
 
 const SEND_PAYMENT_SCREEN = "send";
 const RECEIVE_PAYMENT_SCREEN = "receive";

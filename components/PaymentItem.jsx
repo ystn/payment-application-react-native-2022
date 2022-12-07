@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { PAYMENT_TYPE_SEND } from '../constants';
 
 export function PaymentItem({item}) {
-    return <TouchableOpacity style={styles.container} onPress={() => item.goToPayment(item.id)}>
+    return <TouchableOpacity style={styles.container} onPress={item.goToPayment}>
         <Text style={[styles.amount, {color: item.type === PAYMENT_TYPE_SEND ? 'red' : 'black'}]}>{item.amount} TND</Text>
         <Text style={styles.type}>{item.type}</Text>
         <Text style={styles.description}>{item.description}</Text>
